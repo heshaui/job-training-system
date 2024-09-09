@@ -10,16 +10,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxtjs/style-resources": "^1.2.2",
+    "@nuxtjs/tailwindcss": "^6.12.1",
     "nuxt": "^3.13.0",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.45",
     "sass": "^1.78.0",
-    "sass-loader": "^16.0.1",
-    "tailwindcss": "^3.4.10"
+    "sass-loader": "^16.0.1"
   }
 }
