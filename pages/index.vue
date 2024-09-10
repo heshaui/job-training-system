@@ -1,25 +1,21 @@
 <template>
-    <div class="body">
-        <div class="box">
-			我是首页
-        </div>
+    <div>
+        <div>我是首页</div>
+        <button @click="goToPersonal">个人中心</button>
     </div>
 </template>
-<script lang='ts' setup>
+<script setup>
+import { useRouter } from 'vue-router'
 useSeoMeta({
-    title: '首页',
-    description: '网页描述',
-    author: '作者',
+    title: '岗位培训 - 提升职业技能 | 公司招聘平台',
+    description: '我们提供专业的岗位培训课程，帮助提升您的职业技能，找到理想的工作。',
+    author: '公司招聘平台'
 })
-// 引入接口
-// import { index } from '~/api'
-</script>
-<style scoped lang="scss">
-.box{
-    margin: auto;
-    width: 500px;
-    height: 500px;
-    border: 1px solid #000;
-    background-color: pink;
+
+const router = useRouter()
+
+const goToPersonal = () => {
+  router.push('/personal/membership')
 }
-</style>
+
+</script>

@@ -1,0 +1,54 @@
+body,
+html,
+div,
+p,
+h3,
+h4,
+ul,
+li {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body,
+html,
+#__nuxt {
+	height: 100%;
+}
+body {
+	color:#333;
+	background: #f0f0f0;
+	font-family: Lato, PingFang SC, Microsoft YaHei, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+// textarea 字体跟随系统
+textarea {
+    font-family: inherit;
+}
+// 重置ul,li
+ul li {
+    list-style: none;
+}
+
+@media screen and (min-width: 992px) {
+    // 美化滚动条
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.4);
+        background-clip: padding-box;
+        border: 2px dashed transparent;
+        border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.3);
+    }
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+    ::-webkit-scrollbar-track:hover {
+        background-color: #f8fafc;
+    }
+}

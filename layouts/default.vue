@@ -1,15 +1,15 @@
 
 <template>
     <!-- 页面默认框架结构 -->
-    <div>
+    <div class="h-full flex flex-col">
         <!-- 头部 -->
-        <PageHead></PageHead>
+        <PageHead class="shrink-0"></PageHead>
         <!-- 内容 设置最小高度顶满页面-->
-        <div class="min_h">
+        <main class="flex-auto">
             <!-- 插槽切换路由页面内容 -->
-            <slot></slot>
-        </div>
+            <NuxtPage />
+        </main>
         <!-- 底部 -->
-        <PageFooter></PageFooter>
+        <PageFooter class="shrink-0"></PageFooter>
     </div>
 </template>
