@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>我是首页</div>
-        <button @click="goToPersonal">个人中心</button>
+        <el-button :icon="ElIconHouse" @click="goToPersonal">个人中心</el-button>
     </div>
 </template>
 <script setup>
