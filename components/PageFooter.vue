@@ -9,11 +9,15 @@
 					<span class="nav">新闻公告</span>
 					<span class="nav">个人中心</span>
 				</div>
-				<p class="text-[14px] mb-[11px]">咨询电话: 188-1223-9910</p>
-				<p class="text-[14px] mb-[11px]">工作时间：08:00-18:00</p>
-				<p class="text-[14px] mb-[11px]">网址: www.gongkaoketang.com</p>
-				<p class="text-[14px] mb-[11px]">地址: 北京市海淀区华杰大厦B座</p>
+				<p v-for="item of infoList" :key="item" class="text-[14px] mb-[11px]">{{ item }}</p>
 				<p class="text-[16px] leading-[22px]">科技有限公司版权所有   黑ICP备2023014858号</p>
+			</div>
+			<div class="ml-auto flex">
+				<div v-for="item of codeList" :key="item.src" class="text-center ml-[12px] text-[16px]">
+					<img :src="item.src" class="w-[130px] mb-[9px]" />
+					<div class="leading-[22px]">扫一扫</div>
+					<div class="leading-[22px]">{{ item.label }}</div>
+				</div>
 			</div>
 		</div>
 	</footer>
@@ -21,11 +25,22 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import codeImage from '~/assets/images/code.jpg'
+
 
 const router = useRouter()
 
-const searchType = ref('1')
-const searchValue = ref('')
+const infoList = [
+	'咨询电话: 188-1223-9910',
+	'工作时间：08:00-18:00',
+	'网址: www.gongkaoketang.com',
+	'地址: 北京市海淀区华杰大厦B座'
+]
+
+const codeList = [
+	{ src: codeImage, label: '关注小程序'},
+	{ src: codeImage, label: '联系我们'}
+]
 
 const goToHome = () => {
   router.push('/')
