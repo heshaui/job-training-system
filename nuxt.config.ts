@@ -2,6 +2,9 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
+  imports: {
+    autoImport: true, // 启用自动导入
+  },
   modules: [
     '@nuxtjs/tailwindcss',
     '@element-plus/nuxt'

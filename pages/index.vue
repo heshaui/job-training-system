@@ -1,11 +1,14 @@
 <template>
     <section>
-        <div>
+        <div class="banner">
             <el-carousel height="600px" :autoplay="false" indicator-position="" arrow="never" trigger="click">
                 <el-carousel-item v-for="item of bannerList" :key="item">
-                    <img class="w-[100%]" :src="item" />
+                    <img class="w-[100%] h-[100%] object-cover" :src="item" />
                 </el-carousel-item>
             </el-carousel>
+            <div class="login">
+                <Login />
+            </div>
         </div>
         <div class="w-[1200px] mx-auto mt-[30px]">
             <div class="flex justify-between">
@@ -20,7 +23,7 @@
                 <div v-for="(item, index) of questionList" :key="index" class="question-item">
                     <h3>{{ item.tit }}</h3>
                     <p v-html="item.answer"></p>
-                    <span>{{ `查看${item.tit}` }}</span>
+                    <span class="hover-bg">{{ `查看${item.tit}` }}</span>
                 </div>
             </div>
         </div>
@@ -37,7 +40,7 @@
                     <ul class="pl-[53px]">
                         <li v-for="l of item.list" :key="l" class="list-item">{{ l }}</li>
                     </ul>
-                    <span class="btn">了解更多</span>
+                    <span class="btn hover-text">了解更多</span>
                 </div>
             </div>
         </div>
@@ -62,7 +65,7 @@
                     <p class="text-[24px] font-semibold mb-[7px]">我们提供的免费资料,帮助您深入了解相关领域,提升学习效果</p>
                     <p class="text-[18px]">现在点击马上下载我们的免费学习资料</p>
                 </div>
-                <span class="btn">立即下载</span>
+                <span class="btn hover-bg">立即下载</span>
             </div>
         </div>
     </section>
@@ -160,10 +163,22 @@ const newsList = ref([
 </script>
 
 <style lang="scss" scoped>
+.banner {
+    position: relative;
+    .login {
+        width: 1200px;
+        height: 600px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
 /* 修改轮播图指示器位置 */
 :deep(.el-carousel__indicators.el-carousel__indicators--horizontal) {
-    bottom: 24px;
-    left: 1304px;
+    bottom: 2.5px;
+    left: 69%;
+    transform: none;
 }
 :deep(.el-carousel__button) {
     width: 63px;

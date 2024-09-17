@@ -60,6 +60,7 @@ const goToMessageList = () => {
 </script>
 
 <style lang="scss" scoped>
+$color: #3CAE91;
 .nav-box {
 	line-height: 22px;
 	margin-bottom: 25px;
@@ -70,7 +71,7 @@ const goToMessageList = () => {
 		cursor: pointer;
 		font-weight: 500;
 		&:hover {
-			color: #333;
+			color: $color;
 		}
 	}
 }
