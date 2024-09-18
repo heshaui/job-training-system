@@ -5,21 +5,26 @@
 			<ul class="nav">
 				<li class="nav-item" :class="isJobDatabase ? 'active' : ''" @click="goToJobList">职位库</li>
 				<li class="nav-item" :class="routeName === 'jobScreening' ? 'active' : ''" @click="goToJobScreening">岗位筛选</li>
-				<li class="nav-item">新闻公告</li>
-				<li class="nav-item">个人中心</li>
+				<li class="nav-item" :class="routeName.includes('message') ? 'active' : ''" @click="goToMessageList">消息公告</li>
+				<li class="nav-item" :class="routeName.includes('personal') ? 'active' : ''" @click="goToPersonal">个人中心</li>
 			</ul>
 			<search-bar class="ml-[11px]" isHead />
-			<div class="ml-[35px] w-[36px] text-center cursor-pointer">
+			<div v-if="!isLogin" class="ml-[35px] w-[36px] text-center cursor-pointer">
 				<img src="~/assets/images/user.png" alt="用户">
 				<span class="text-[14px] text-[#666] leading-[28px] block cursor-pointer">登录</span>
+			</div>
+			<div v-else class="ml-[11px] w-[70px] h-[36px] flex items-center">
+				<img src="~/assets/images/user.png" class="avator" alt="用户头像">
+				<p class="user-name" :title="userInfo.name">{{ userInfo.name }}</p>
 			</div>
 		</div>	
 	</header>
 </template>
 
 <script setup>
-import { watch, computed } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useUserStore } from '~/stores/user'
 const router = useRouter()
 const route = useRoute()
 const routeName = ref(route.name)
@@ -33,14 +38,6 @@ const isJobDatabase = computed(() => {
 	return routeName.value.includes('jobDatabase') || routeName.value.includes('RecruitingJob')
 })
 
-const goToHome = () => {
-  router.push('/')
-}
-
-const goToCompanyList = () => {
-  router.push('/company')
-}
-
 const goToJobList = () => {
   router.push('/jobDatabase')
 }
@@ -52,6 +49,16 @@ const goToJobScreening = () => {
 const goToMessageList = () => {
   router.push('/message')
 }
+
+const goToPersonal = () => {
+	router.push('/personal/membership')
+}
+
+const userStore = useUserStore()
+const isLogin = userStore.isLogin
+const userInfo = ref({
+	name: '占三道'
+})
 </script>
 
 <style lang="scss" scoped>
@@ -75,6 +82,19 @@ $color: #3CAE91;
 			color: $color;
 		}
 	}
+}
+.avator {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	margin-right: 6px;
+}
+.user-name {
+	font-size: 14px;
+	color: #666;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 </style>
 

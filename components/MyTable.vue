@@ -1,5 +1,5 @@
 <script setup>
-	import { defineProps } from 'vue';
+	import { defineProps, computed } from 'vue';
     const props = defineProps({
         tableColumns: {
             type: Array,
@@ -22,19 +22,39 @@
 <template>
     <el-table 
 		id="myTable"
-        v-bind="$attrs" 
-        stripe border
-        :max-height="440"
+        v-bind="$attrs"
         empty-text="暂无数据"
-    >
-        <el-table-column v-for="(column, index) in columns" :key="index" v-bind="column"></el-table-column>
+    >   
+        <template v-for="(column, index) of columns">
+            <template v-if="column.solt">
+                <slot :name="column.slot" />
+            </template>
+            <el-table-column v-else v-bind="column" :key="index">
+                <template #default="scope">
+                    <template v-if="column.formatter">
+                        <span v-html="column.formatter(scope.row, column)" />
+                    </template>
+                    <template v-else>
+                        <!-- 正常显示 -->
+                        <span>{{ scope.row[column.prop] }}</span>
+                    </template>
+                </template>
+                
+            </el-table-column>
+        </template>
     </el-table>
 </template>
 
 <style lang="scss">
 #myTable.el-table {
+    thead {
+        color: #333;
+    }
 	th, td {
 		border: none;
 	}
+    tr.el-table__row:hover {
+        background: #DDF2EC !important;
+    }
 }
 </style>

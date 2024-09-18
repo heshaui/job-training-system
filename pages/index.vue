@@ -7,7 +7,8 @@
                 </el-carousel-item>
             </el-carousel>
             <div class="login">
-                <Login />
+                <Login v-if="!isLogin" />
+                <HomeUserCard v-else />
             </div>
         </div>
         <div class="w-[1200px] mx-auto mt-[30px]">
@@ -72,6 +73,7 @@
 </template>
 <script setup>
 import { useRouter } from 'vue-router'
+import { useUserStore } from '~/stores/user'
 import bannerImg from '~/assets/images/banner-1.png'
 import introduceText1 from '~/assets/images/introduce-text-1.png'
 import introduceText2 from '~/assets/images/introduce-text-2.png'
@@ -95,6 +97,8 @@ const router = useRouter()
 const goToPersonal = () => {
   router.push('/personal/membership')
 }
+const userStore = useUserStore()
+const isLogin = userStore.isLogin
 
 const bannerList = [bannerImg, bannerImg, bannerImg]
 const introduceList = [
