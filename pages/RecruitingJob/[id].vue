@@ -297,12 +297,12 @@ p.info {
         align-items: center;
         color: #666;
         font-size: 16px;
+        margin-bottom: 7px;
         img {
             width: 16px;
             height: 16px;
             margin-right: 10px;
         }
-        margin-bottom: 7px;
     }
 }
 .border-20 {

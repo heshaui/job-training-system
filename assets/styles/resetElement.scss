@@ -1,0 +1,39 @@
+$color: #3CAE91;
+$hoverColor: #DDF2EC;
+
+// 重置下拉触摸、选中样式
+.el-select-dropdown__item {
+	font-size: 16px !important;
+}
+.el-select-dropdown__item.is-selected {
+	background-color: $hoverColor !important;
+	color: $color !important;
+  font-weight: normal !important;
+}
+
+.el-select-dropdown__item.is-hovering {
+	background-color: $hoverColor !important;
+}
+
+// 重置下拉大小样式
+.my-select.el-select {
+	width: 280px;
+	height: 66px;
+	.el-select__wrapper {
+		width: 280px;
+		height: 66px;
+		border-radius: 4px;
+		background: #fff;
+		box-shadow: 0 0 0 1px #dcdcdc;
+		color: #333;
+		font-size: 16px;
+		&.is-focused {
+			box-shadow: 0 0 0 1px $color;
+		}
+	}
+}
+
+// 面包屑样式
+.el-breadcrumb__inner.is-link:hover, .el-breadcrumb__inner a:hover {
+  color: $color !important;
+}

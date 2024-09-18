@@ -6,13 +6,38 @@
                 <li class="tab-item mr-[67px]" :class="active === '1' ? 'active' : ''" @click="active = '1'">按照个人条件筛选</li>
                 <li class="tab-item" :class="active === '2' ? 'active' : ''" @click="active = '2'">按职位要求筛选</li>
             </ul>
-            <div class="flex job-type justify-center">
+            <div class="flex job-type justify-center mb-[23px]">
                 <p>岗位类型：</p>
                 <span v-for="(item, key) of jobTypes" :key="key" :class="jobType === key ? 'active' : ''" @click="jobType=key">{{item}}</span>
             </div>
-            <div>
+            <div class="flex flex-wrap px-[14px] justify-between content-between h-[148px]">
                 <cascader-area  placeholder="请选择岗位地址"/>
+                <el-select class="my-select" placeholder="flajfdsjf">
+                    <el-option label="" value=""/>
+                </el-select>
+                <el-select class="my-select" placeholder="flajfdsjf">
+                    <el-option label="" value=""/>
+                </el-select>
+                <el-select class="my-select" placeholder="flajfdsjf">
+                    <el-option label="" value=""/>
+                </el-select>
+                <el-select class="my-select" placeholder="flajfdsjf">
+                    <el-option label="" value=""/>
+                </el-select>
+                <el-select class="my-select" placeholder="flajfdsjf">
+                    <el-option label="" value=""/>
+                </el-select>
+                <el-select class="my-select" placeholder="flajfdsjf">
+                    <el-option label="" value=""/>
+                </el-select>
+                <el-select class="my-select" placeholder="flajfdsjf">
+                    <el-option label="" value=""/>
+                </el-select>
             </div>
+            <div class="searchBtn">检索职位</div>
+            <div></div>
+            <my-table />
+            <my-pagination />
         </div>
     </section>
 </template>
@@ -61,6 +86,22 @@ const jobTypes = ref(['公务员', '事业编', '央国企', '军队文职'])
                 color: #fff;
             }
         }
+    }
+}
+.searchBtn {
+    width: 220px;
+    height: 66px;
+    border-radius: 33px;
+    line-height: 66px;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    margin: 30px auto 20px;
+    font-weight: bold;
+    background: linear-gradient(to right, #6FD7C4, #3CAE91);
+    cursor: pointer;
+    &:hover {
+        background: linear-gradient(to right,#3CAE91, #6FD7C4);
     }
 }
 </style>

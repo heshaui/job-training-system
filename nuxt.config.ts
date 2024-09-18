@@ -17,6 +17,8 @@ export default defineNuxtConfig({
     '@/assets/styles/main.scss',
     '@/assets/styles/tailwind.css',
     'element-plus/dist/index.css',
-    'element-plus/theme-chalk/display.css'
-  ]
+    'element-plus/theme-chalk/display.css',
+    '@/assets/styles/resetElement.scss'
+  ],
+  ssr: false
 })

@@ -1,0 +1,40 @@
+<script setup>
+	import { defineProps } from 'vue';
+    const props = defineProps({
+        tableColumns: {
+            type: Array,
+            default: () => []
+        }
+    })
+    const initColumns = () => {
+        return props.tableColumns.map((column) => {
+            return {
+                ...column,
+                // 添加默认的列宽
+                minWidth: column.minWidth || '100px',
+                align: column.align || 'center'
+            }
+        })
+    }
+    const columns = computed(() => initColumns())
+</script>
+
+<template>
+    <el-table 
+		id="myTable"
+        v-bind="$attrs" 
+        stripe border
+        :max-height="440"
+        empty-text="暂无数据"
+    >
+        <el-table-column v-for="(column, index) in columns" :key="index" v-bind="column"></el-table-column>
+    </el-table>
+</template>
+
+<style lang="scss">
+#myTable.el-table {
+	th, td {
+		border: none;
+	}
+}
+</style>
