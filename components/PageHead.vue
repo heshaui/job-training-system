@@ -1,19 +1,19 @@
 <template>
 	<header class="h-[100px] bg-[#fff]">
 		<div class="w-[1200px] h-[100%] m-auto flex items-center">
-			<img class="mr-[70px] h-[70px]" src="~/assets/images/logo.png" />
+			<img class="mr-[70px] h-[70px] cursor-pointer" src="~/assets/images/logo.png" @click="goToHome" />
 			<ul class="nav">
 				<li class="nav-item" :class="isJobDatabase ? 'active' : ''" @click="goToJobList">职位库</li>
 				<li class="nav-item" :class="routeName === 'jobScreening' ? 'active' : ''" @click="goToJobScreening">岗位筛选</li>
 				<li class="nav-item" :class="routeName.includes('message') ? 'active' : ''" @click="goToMessageList">消息公告</li>
 				<li class="nav-item" :class="routeName.includes('personal') ? 'active' : ''" @click="goToPersonal">个人中心</li>
 			</ul>
-			<search-bar class="ml-[11px]" isHead />
-			<div v-if="!isLogin" class="ml-[35px] w-[36px] text-center cursor-pointer">
+			<search-bar v-if="routeName === 'index'" class="ml-[11px]" isHead />
+			<div v-if="!isLogin" class="ml-auto w-[36px] text-center cursor-pointer">
 				<img src="~/assets/images/user.png" alt="用户">
 				<span class="text-[14px] text-[#666] leading-[28px] block cursor-pointer">登录</span>
 			</div>
-			<div v-else class="ml-[11px] w-[70px] h-[36px] flex items-center">
+			<div v-else class="ml-auto w-[70px] h-[36px] flex items-center">
 				<img src="~/assets/images/user.png" class="avator" alt="用户头像">
 				<p class="user-name" :title="userInfo.name">{{ userInfo.name }}</p>
 			</div>
@@ -38,6 +38,10 @@ const isJobDatabase = computed(() => {
 	return routeName.value.includes('jobDatabase') || routeName.value.includes('RecruitingJob')
 })
 
+const goToHome = () => {
+	router.push('/')
+}
+
 const goToJobList = () => {
   router.push('/jobDatabase')
 }
@@ -51,7 +55,7 @@ const goToMessageList = () => {
 }
 
 const goToPersonal = () => {
-	router.push('/personal/membership')
+	router.push('/personal/userCenter')
 }
 
 const userStore = useUserStore()

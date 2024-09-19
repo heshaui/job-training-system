@@ -4,20 +4,20 @@
         <!-- 头部 -->
         <PageHead class="shrink-0"></PageHead>
         <!-- 内容 设置最小高度顶满页面-->
-        <main class="flex flex-auto">
-            <aside class="w-[200px] shrink-0">
-				<ul>
-				<li @click="goToPage('membership')">会员详情</li>
-				<li @click="goToPage('resume')">我的简历</li>
-				<li @click="goToPage('subscriptions')">职位订阅</li>
-				<li @click="goToPage('favorites')">我的收藏</li>
-				<li @click="goToPage('footprints')">我的足迹</li>
-				<li @click="goToPage('recommendations')">职位推荐</li>
-				</ul>
-			</aside>
-			<main class="flex-auto">
-				<NuxtPage />
-			</main>
+        <main class="flex-auto bg-[#F4F5FA]">
+            <div class="main-content flex pt-[20px]">
+              <aside class="w-[198px] mr-[12px] shrink-0">
+                <PersonalMenu />
+                <div class="w-[198px] h-[222px] my-[20px] flex flex-col items-center rounded-[8px] py-[18px] bg-[#fff]">
+                  <span class="text-[#666] font-bold leading-[22px] text-[16px] mb-[11px]">简历投递实时跟踪</span>
+                  <img src="~/assets/images/code.jpg" class="w-[130px] h-[130px] border-[10px] border-solid border-[#fff]" />
+                  <span class="text-[#666] leading-[22px] text-[16px]">关注公众号</span>
+                </div>
+              </aside>
+              <main class="flex-auto">
+                <NuxtPage />
+              </main>
+            </div>
         </main>
         <!-- 底部 -->
         <PageFooter class="shrink-0"></PageFooter>
@@ -30,6 +30,6 @@
   const router = useRouter()
   
   const goToPage = (page) => {
-	router.push(`/personal/${page}`)
+	  router.push(`/personal/${page}`)
   }
   </script>

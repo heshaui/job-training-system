@@ -1,5 +1,5 @@
 <template>
-	<div>简历</div>
+	<div>个人中心</div>
 </template>
 <script setup>
 definePageMeta({
