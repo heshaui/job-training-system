@@ -31,7 +31,7 @@ const menus = ref([
 	{name: '简历模板', page: 'resumeTemplate'},
 	{name: '职位订阅', page: 'subscriptions'},
 	{name: '积分管理', page: 'integraManage'},
-	{name: '我的收藏', page: 'favorites'},
+	// {name: '我的收藏', page: 'favorites'},
 	{name: '我的足迹', page: 'footprints'}
 ])
 menus.value.forEach(async (menu, index) => {

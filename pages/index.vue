@@ -24,7 +24,7 @@
                 <div v-for="(item, index) of questionList" :key="index" class="question-item">
                     <h3>{{ item.tit }}</h3>
                     <p v-html="item.answer"></p>
-                    <span class="hover-bg">{{ `查看${item.tit}` }}</span>
+                    <!-- <span class="hover-bg">{{ `查看${item.tit}` }}</span> -->
                 </div>
             </div>
         </div>
@@ -41,11 +41,11 @@
                     <ul class="pl-[53px]">
                         <li v-for="l of item.list" :key="l" class="list-item">{{ l }}</li>
                     </ul>
-                    <span class="btn hover-text">了解更多</span>
+                    <!-- <span class="btn hover-text">了解更多</span> -->
                 </div>
             </div>
         </div>
-        <div class="w-[1200px] mx-auto mt-[60px] mb-[40px]">
+        <!-- <div class="w-[1200px] mx-auto mt-[60px] mb-[40px]">
             <div class="flex justify-center mb-[40px]">
                 <img src="~/assets/images/home-tit-3.png" alt="新闻咨询" />
             </div>
@@ -59,7 +59,7 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        </div> -->
         <div class="file-box">
             <div class="h-[100%] w-[1200px] mx-auto flex justify-around items-center">
                 <div>
