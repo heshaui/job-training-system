@@ -30,13 +30,13 @@ const menus = ref([
 	{name: '职位速配', page: 'recommendations'},
 	{name: '简历模板', page: 'resumeTemplate'},
 	{name: '职位订阅', page: 'subscriptions'},
-	{name: '积分管理', page: 'integraManage'},
-	// {name: '我的收藏', page: 'favorites'},
+	// {name: '积分管理', page: 'integraManage'},
+	{name: '我的收藏', page: 'favorites'},
 	{name: '我的足迹', page: 'footprints'}
 ])
 menus.value.forEach(async (menu, index) => {
-	menu.icon = await loadImage(`menu-${index+1}`)
-	menu.activeIcon = await loadImage(`menu-${index+1}-a`)
+	menu.icon = await loadImage(`menu-${menu.page}`)
+	menu.activeIcon = await loadImage(`menu-${menu.page}-a`)
 })
 
 
