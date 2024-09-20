@@ -26,9 +26,7 @@
         empty-text="暂无数据"
     >   
         <template v-for="(column, index) of columns">
-            <template v-if="column.solt">
-                <slot :name="column.slot" />
-            </template>
+            <slot v-if="column.slot" :name="column.slot" />
             <el-table-column v-else v-bind="column" :key="index">
                 <template #default="scope">
                     <template v-if="column.formatter">
@@ -39,7 +37,6 @@
                         <span>{{ scope.row[column.prop] }}</span>
                     </template>
                 </template>
-                
             </el-table-column>
         </template>
     </el-table>
@@ -47,14 +44,15 @@
 
 <style lang="scss">
 #myTable.el-table {
+    font-size: 14px;
+    td.el-table__cell {
+		padding: 18px 0 !important;
+	}
     thead {
         color: #333;
     }
 	th, td {
 		border: none;
 	}
-    tr.el-table__row:hover {
-        background: #DDF2EC !important;
-    }
 }
 </style>

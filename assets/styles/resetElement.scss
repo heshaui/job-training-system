@@ -33,6 +33,11 @@ $hoverColor: #DDF2EC;
 	}
 }
 
+.my-popper .el-select-dropdown__item {
+    height: 66px;
+    line-height: 66px;
+}
+
 // 面包屑样式
 .el-breadcrumb__inner.is-link:hover, .el-breadcrumb__inner a:hover {
   color: $color !important;

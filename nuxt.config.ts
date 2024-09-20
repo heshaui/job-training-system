@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     '~/plugins/pinia.js'
   ],
   css: [
+    '@/assets/styles/font.css',
     '@/assets/styles/main.scss',
     '@/assets/styles/tailwind.css',
     'element-plus/dist/index.css',

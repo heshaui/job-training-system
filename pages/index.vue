@@ -74,7 +74,9 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { useUserStore } from '~/stores/user'
-import bannerImg from '~/assets/images/banner-1.png'
+import bannerImg1 from '~/assets/images/banner-1.png'
+import bannerImg2 from '~/assets/images/banner-2.png'
+import bannerImg3 from '~/assets/images/banner-3.png'
 import introduceText1 from '~/assets/images/introduce-text-1.png'
 import introduceText2 from '~/assets/images/introduce-text-2.png'
 import introduceText3 from '~/assets/images/introduce-text-3.png'
@@ -100,7 +102,7 @@ const goToPersonal = () => {
 const userStore = useUserStore()
 const isLogin = userStore.isLogin
 
-const bannerList = [bannerImg, bannerImg, bannerImg]
+const bannerList = [bannerImg1, bannerImg2, bannerImg3]
 const introduceList = [
     {src: introduceText1, label: 'AI精准选岗 专业选岗平台'},
     {src: introduceText2, label: '实时更新，公务员，事业编 国央企最最新岗'},

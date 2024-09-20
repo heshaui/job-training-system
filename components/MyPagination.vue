@@ -1,7 +1,8 @@
 <template>
     <div class="py-[30px] flex justify-center">
         <el-pagination 
-            background 
+            background
+            size="large"
             layout="pager"
             v-bind="$attrs"
         />
