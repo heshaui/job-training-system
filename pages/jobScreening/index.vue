@@ -45,7 +45,7 @@
                         <el-option v-for="(item, key) of selectData.jgOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
                     <el-select v-model="form.val12" v-show="jobType === 0" popper-class="my-popper" class="my-select" placeholder="请选择招录机关">
-                        <el-option v-for="(item, key) of selectData.disciplineOptions" :key="key" :label="item.label" :value="item.value" />
+                        <el-option v-for="(item, key) of zljgList" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
                     <el-select v-model="form.val13" v-show="jobType === 1" popper-class="my-popper" class="my-select" placeholder="请选择考试类型">
                         <el-option v-for="(item, key) of selectData.ksOptions" :key="key" :label="item.label" :value="item.value" />
@@ -108,6 +108,10 @@ const form = ref({
 // 专业类数据
 const majorList = computed(() => {
     return selectData[`${form.value.val7}Options`]
+})
+// 招录机关数据
+const zljgList = computed(() => {
+    return selectData[`jg_${form.value.val11}_Options`]
 })
 const tableData = ref({
     records: [

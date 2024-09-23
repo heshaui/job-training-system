@@ -192,6 +192,19 @@ export default {
 		{label: '外资/合资企业', value: '4'},
 		{label: '银行', value: '5'}
 	],
+	// 机构的二级
+	jg_1_options: [
+
+	],
+	jg_2_options: [
+
+	],
+	jg_3_options: [
+
+	],
+	jg_4_options: [
+
+	]
 }
   
   
