@@ -12,70 +12,46 @@
             </div>
             <div>
                 <div v-show="active === '1'" class="flex flex-wrap px-[14px] justify-between content-between h-[148px]">
-                    <cascader-area  placeholder="请选择岗位地址"/>
-                    <el-select class="my-select" popper-class="my-popper" placeholder="请选择政治面貌">
-                        <el-option label="不限" value="0"/>
-                        <el-option label="共青团员" value="1"/>
-                        <el-option label="中共党员" value="2"/>
+                    <cascader-area v-model="form.val1" placeholder="请选择岗位地址"/>
+                    <cascader-area v-model="form.val2" placeholder="请选择户籍地址"/>
+                    <el-select v-model="form.val3" class="my-select" popper-class="my-popper" placeholder="请选择身份">
+                        <el-option v-for="(item, key) of selectData.identityOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select class="my-select" popper-class="my-popper" placeholder="请选择基层工作最低年限">
-                        <el-option label="不限" value=""/>
-                        <el-option label="一年" value=""/>
-                        <el-option label="二年" value=""/>
-                        <el-option label="三年" value=""/>
-                        <el-option label="五年以上" value=""/>
+                    <el-select v-model="form.val4" class="my-select" popper-class="my-popper" placeholder="请选择政治面貌">
+                        <el-option v-for="(item, key) of selectData.politicalOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select class="my-select" popper-class="my-popper" placeholder="请选择学位">
-                        <el-option label="大专及以上" value=""/>
-                        <el-option label="本科及学士学位" value=""/>
+                    <el-select v-model="form.val5" class="my-select" popper-class="my-popper" placeholder="请选择基层工作最低年限">
+                        <el-option v-for="(item, key) of selectData.experienceOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select class="my-select" popper-class="my-popper" placeholder="请选择学历">
-                        <el-option label="" value=""/>
+                    <el-select v-model="form.val6" class="my-select" popper-class="my-popper" placeholder="请选择学历">
+                        <el-option v-for="(item, key) of selectData.educationOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select class="my-select" popper-class="my-popper" placeholder="请选择学科">
-                        <el-option label="哲学" value=""/>
-                        <el-option label="经济学" value=""/>
-                        <el-option label="法学" value=""/>
-                        <el-option label="教育学" value=""/>
-                        <el-option label="文学" value=""/>
-                        <el-option label="历史学" value=""/>
-                        <el-option label="理学" value=""/>
-                        <el-option label="工学" value=""/>
-                        <el-option label="农学" value=""/>
-                        <el-option label="医学" value=""/>
-                        <el-option label="军事学" value=""/>
-                        <el-option label="管理学" value=""/>
+                    <el-select v-model="form.val7" class="my-select" popper-class="my-popper" placeholder="请选择学科">
+                        <el-option v-for="(item, key) of selectData.disciplineOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select class="my-select" popper-class="my-popper" placeholder="请选择专业类">
-                        <el-option label="" value=""/>
-                    </el-select>
-                    <el-select class="my-select" popper-class="my-popper" placeholder="请选择专业名称">
-                        <el-option label="" value=""/>
+                    <el-select v-model="form.val8" class="my-select" popper-class="my-popper" placeholder="请选择专业类">
+                        <el-option v-for="(item, key) of majorList" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
                 </div>
                 <div v-show="active === '2'" class="flex px-[14px] justify-center">
-                    <cascader-area  class="mr-[15px]" placeholder="请选择报考省份、地区"/>
-                    <el-select class="my-select mr-[15px]" popper-class="my-popper" placeholder="年份">
-                        <el-option label="不限" value="0"/>
-                        <el-option label="共青团员" value="1"/>
-                        <el-option label="中共党员" value="2"/>
+                    <cascader-area v-model="form.val9" class="mr-[15px]" placeholder="请选择报考省份、地区"/>
+                    <el-date-picker
+                        v-model="form.val10"
+                        class="my-date mr-[15px]"
+                        type="year"
+                        placeholder="年份"
+                    />
+                    <el-select v-model="form.val11" v-show="jobType === 0" popper-class="my-popper" class="my-select mr-[15px]" placeholder="请选择机构性质">
+                        <el-option v-for="(item, key) of selectData.jgOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select v-show="jobType === 0" popper-class="my-popper" class="my-select mr-[15px]" placeholder="请选择机构性质">
-                        <el-option label="不限" value=""/>
-                        <el-option label="一年" value=""/>
-                        <el-option label="二年" value=""/>
-                        <el-option label="三年" value=""/>
-                        <el-option label="五年以上" value=""/>
+                    <el-select v-model="form.val12" v-show="jobType === 0" popper-class="my-popper" class="my-select" placeholder="请选择招录机关">
+                        <el-option v-for="(item, key) of selectData.disciplineOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select v-show="jobType === 0" popper-class="my-popper" class="my-select" placeholder="请选择招录机关">
-                        <el-option label="大专及以上" value=""/>
-                        <el-option label="本科及学士学位" value=""/>
+                    <el-select v-model="form.val13" v-show="jobType === 1" popper-class="my-popper" class="my-select" placeholder="请选择考试类型">
+                        <el-option v-for="(item, key) of selectData.ksOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select v-show="jobType === 1" popper-class="my-popper" class="my-select" placeholder="请选择考试类型">
-                        <el-option label="" value=""/>
-                    </el-select>
-                    <el-select v-show="jobType === 2" popper-class="my-popper" class="my-select" placeholder="请选择企业类型">
-                        <el-option label="" value=""/>
+                    <el-select v-model="form.val14" v-show="jobType === 2" popper-class="my-popper" class="my-select" placeholder="请选择企业类型">
+                        <el-option v-for="(item, key) of selectData.companyOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
                 </div>
             </div>
@@ -109,9 +85,30 @@
 </template>
 
 <script setup>
+import selectData from '~/utils/selectData'
 const active = ref('1')
 const jobType = ref(0)
 const jobTypes = ref(['公务员', '事业编', '央国企', '军队文职'])
+const form = ref({
+    val1: '',
+    val2: '',
+    val3: '',
+    val4: '',
+    val5: '',
+    val6: '',
+    val7: '',
+    val8: '',
+    val9: '',
+    val10: '',
+    val11: '',
+    val12: '',
+    val13: '',
+    val14: ''
+})
+// 专业类数据
+const majorList = computed(() => {
+    return selectData[`${form.value.val7}Options`]
+})
 const tableData = ref({
     records: [
         {area: '北京'},

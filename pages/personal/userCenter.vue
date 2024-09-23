@@ -32,7 +32,7 @@
 		</ul>
 		<PersonalResume />
 		<div class="notice-box">
-			<img src="~/assets/images/user-icon-1.png" />
+			<img src="~/assets/images/user-icon-2.png" />
 			企业动态 你关注的 <span class="text-[#3CAE91] mx-[10px]">{{ companyname }}</span> 发布了职位
 		</div>
 		<div class="subscribe-box">

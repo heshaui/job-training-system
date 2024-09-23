@@ -33,6 +33,27 @@ $hoverColor: #DDF2EC;
 	}
 }
 
+// 重置年份选择器样式
+.my-date.el-input {
+	width: 280px;
+	height: 66px;
+	.el-input__wrapper {
+		width: 280px;
+		height: 66px;
+		border-radius: 4px;
+		background: #fff;
+		box-shadow: 0 0 0 1px #dcdcdc;
+		color: #333;
+		font-size: 16px;
+		&.is-focused {
+			box-shadow: 0 0 0 1px $color;
+		}
+	}
+}
+.el-date-table-cell__text {
+	color: $color;
+}
+
 .my-popper .el-select-dropdown__item {
     height: 66px;
     line-height: 66px;
