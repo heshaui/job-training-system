@@ -32,7 +32,7 @@
 				</div>
 			</div>
 			<div class="btn-box">
-				<button>修改简历</button>
+				<button @click="goToEditResume">修改简历</button>
 				<button>创建简历</button>
 				<button>预览简历</button>
 				<button>刷新简历</button>
@@ -75,6 +75,7 @@
 
 <script setup>
 import { ref, defineProps } from 'vue'
+import { useRouter } from 'vue-router'
 import company1 from '~/assets/images/company-1.png'
 
 const props = defineProps({
@@ -96,6 +97,11 @@ const userInfo = ref({
 	type: '标准简历',
 	state: '审核中'
 })
+
+const router = useRouter()
+const goToEditResume = () => {
+	router.push('/personal/editResume')
+}
 </script>
 
 <style lang="scss" scoped>

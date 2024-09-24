@@ -1,5 +1,6 @@
 $color: #3CAE91;
 $hoverColor: #DDF2EC;
+$btnhoverColor: #53cdae;
 
 // 重置下拉触摸、选中样式
 .el-select-dropdown__item {
@@ -32,11 +33,16 @@ $hoverColor: #DDF2EC;
 		}
 	}
 }
+// 下拉高度
+.my-popper .el-select-dropdown__item {
+    height: 66px;
+    line-height: 66px;
+}
 
 // 重置年份选择器样式
 .my-date.el-input {
-	width: 280px;
-	height: 66px;
+	width: 280px !important;
+	height: 66px !important;
 	.el-input__wrapper {
 		width: 280px;
 		height: 66px;
@@ -45,21 +51,86 @@ $hoverColor: #DDF2EC;
 		box-shadow: 0 0 0 1px #dcdcdc;
 		color: #333;
 		font-size: 16px;
+		.el-input__inner::placeholder {
+			color: #333;
+			font-size: 16px;
+		}
 		&.is-focused {
 			box-shadow: 0 0 0 1px $color;
 		}
 	}
 }
-.el-date-table-cell__text {
-	color: $color;
+.el-date-picker td.today .el-date-table-cell__text,
+.el-date-picker td .el-date-table-cell__text:hover {
+	color: $color !important;
 }
-
-.my-popper .el-select-dropdown__item {
-    height: 66px;
-    line-height: 66px;
+.el-date-picker td.current:not(.disabled) .el-date-table-cell__text {
+	background-color: $color !important;
+	color: #fff !important;
+	&:hover {
+		color: #fff !important;
+	}
 }
 
 // 面包屑样式
 .el-breadcrumb__inner.is-link:hover, .el-breadcrumb__inner a:hover {
   color: $color !important;
+}
+
+// 重置级联选择器
+.my-cascader.el-cascader {
+	.el-input__wrapper {
+		width: 280px;
+		height: 66px;
+		border-radius: 4px;
+		background: #fff;
+		box-shadow: 0 0 0 1px #dcdcdc;
+		color: #333;
+		font-size: 16px;
+		.el-input__inner {
+			&::placeholder {
+			color: #333;
+			font-size: 16px;  
+			}
+		}
+		svg {
+			font-size: 16px;
+		}
+	}
+}
+.my-cascader-popper {
+	.el-cascader-node {
+		height: 44px !important;
+		line-height: 44px !important;
+		font-size: 16px;
+		color: #333;
+	}
+}
+.el-cascader .el-input.is-focus .el-input__wrapper {
+	box-shadow: 0 0 0 1px $color;
+}
+.el-cascader-node {
+	&:not(.is-disabled):hover, &:not(.is-disabled):focus {
+	  background: #DDF2EC !important;
+	}
+	&.in-active-path, &.is-selectable.in-checked-path, &.is-active {
+	  color: $color !important;
+	  font-weight: normal;
+	  background: #DDF2EC !important;
+	}
+}
+
+// 按钮
+.el-button.my-btn {
+	background-color: #3CAE91;
+	color: #fff;
+	&:hover {
+		background-color: $btnhoverColor;
+		color: #fff;
+	}
+}
+.el-button:hover {
+	border-color: $color !important;
+	color: $color !important;
+	background-color: $hoverColor !important;
 }

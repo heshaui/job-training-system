@@ -6,7 +6,13 @@
                 <li v-show="!data.more || (data.more && ((!isMore && key <= data.showNum) || isMore))" :class="active === key ? 'active' : 'hover-text'" class="list-item" @click="onSelect(label, item, key)">{{ item }}</li>
             </template>
         </ul>
-        <el-button v-if="data.more" class="shrink-0" :icon="isMore ? 'Minus' : 'Plus'" @click="showMore">{{ isMore ? '收起' : '更多' }}</el-button>
+        <button v-if="data.more" class="shrink-0 btn-more" @click="showMore">
+            <el-icon>
+                <Minus v-if="isMore" />
+                <Plus v-else />
+            </el-icon>
+            {{ isMore ? '收起' : '更多' }}
+        </button>
     </div>
 </template>
 
@@ -53,15 +59,29 @@
             }
         }
     }
-    :deep(.el-button) {
+    .btn-more {
         margin-left: 20px;
-        margin-top: -2px;
         width: 55px;
-        height: 24px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 2px;
         border: 1px solid #DDDDDD;
-        font-size: 14px;
+        font-size: 12px;
         color: #666;
+        :deep(.el-icon) {
+            font-size: 14px;
+            color: #666;
+            margin-right: 5px;
+        }
+        &:hover {
+            border-color: #3CAE91;
+            color: #3CAE91;
+            :deep(.el-icon) {
+                color: #3CAE91;
+            }
+        }
     }
 }
 </style>

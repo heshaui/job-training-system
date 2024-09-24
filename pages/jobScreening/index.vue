@@ -12,8 +12,8 @@
             </div>
             <div>
                 <div v-show="active === '1'" class="flex flex-wrap px-[14px] justify-between content-between h-[148px]">
-                    <cascader-area v-model="form.val1" placeholder="请选择岗位地址"/>
-                    <cascader-area v-model="form.val2" placeholder="请选择户籍地址"/>
+                    <cascader-area v-model="form.val1" class="my-cascader" popper-class="my-cascader-popper" placeholder="请选择岗位地址"/>
+                    <cascader-area v-model="form.val2" class="my-cascader" popper-class="my-cascader-popper" placeholder="请选择户籍地址"/>
                     <el-select v-model="form.val3" class="my-select" popper-class="my-popper" placeholder="请选择身份">
                         <el-option v-for="(item, key) of selectData.identityOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
@@ -26,15 +26,18 @@
                     <el-select v-model="form.val6" class="my-select" popper-class="my-popper" placeholder="请选择学历">
                         <el-option v-for="(item, key) of selectData.educationOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select v-model="form.val7" class="my-select" popper-class="my-popper" placeholder="请选择学科">
+                    <el-select v-model="form.val7" class="my-select" filterable popper-class="my-popper" placeholder="请选择学科">
                         <el-option v-for="(item, key) of selectData.disciplineOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select v-model="form.val8" class="my-select" popper-class="my-popper" placeholder="请选择专业类">
+                    <el-select v-model="form.val8" class="my-select" filterable popper-class="my-popper" placeholder="请选择专业类">
+                        <template #empty>
+                            <span>请先选择学科</span>
+                        </template>
                         <el-option v-for="(item, key) of majorList" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
                 </div>
                 <div v-show="active === '2'" class="flex px-[14px] justify-center">
-                    <cascader-area v-model="form.val9" class="mr-[15px]" placeholder="请选择报考省份、地区"/>
+                    <cascader-area v-model="form.val9" class="mr-[15px] my-cascader" popper-class="my-cascader-popper" placeholder="请选择报考省份、地区"/>
                     <el-date-picker
                         v-model="form.val10"
                         class="my-date mr-[15px]"
@@ -44,7 +47,10 @@
                     <el-select v-model="form.val11" v-show="jobType === 0" popper-class="my-popper" class="my-select mr-[15px]" placeholder="请选择机构性质">
                         <el-option v-for="(item, key) of selectData.jgOptions" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
-                    <el-select v-model="form.val12" v-show="jobType === 0" popper-class="my-popper" class="my-select" placeholder="请选择招录机关">
+                    <el-select v-model="form.val12" v-show="jobType === 0" filterable popper-class="my-popper" class="my-select" placeholder="请选择招录机关">
+                        <template #empty>
+                            <span>请先选择机构性质</span>
+                        </template>
                         <el-option v-for="(item, key) of zljgList" :key="key" :label="item.label" :value="item.value" />
                     </el-select>
                     <el-select v-model="form.val13" v-show="jobType === 1" popper-class="my-popper" class="my-select" placeholder="请选择考试类型">
@@ -111,7 +117,7 @@ const majorList = computed(() => {
 })
 // 招录机关数据
 const zljgList = computed(() => {
-    return selectData[`jg_${form.value.val11}_Options`]
+    return selectData[`jg_${form.value.val11}_options`]
 })
 const tableData = ref({
     records: [
